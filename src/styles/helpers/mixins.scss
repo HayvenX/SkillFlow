@@ -1,0 +1,114 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+@use '@/styles/constants' as *;
+
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}
+
+@mixin font-face(
+  $font-family,
+  $file-name,
+  $font-weight,
+  $font-style: normal,
+  $font-display: swap
+) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-display: $font-display;
+    src: url('@/assets/fonts/#{$file-name}.woff2') format('woff2');
+  }
+}
+
+@mixin mq($size, $type: max) {
+  @if map.has_key($breakpoints, $size) {
+    $size: map.get($breakpoints, $size);
+  }
+
+  @if $type == max {
+    $size: $size - 1px;
+  }
+
+  @media (#{$type}-width: $size) {
+    @content;
+  }
+}
+
+@mixin hover($hasActiveEffectOnMobile: true) {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @if $hasActiveEffectOnMobile {
+    @media (any-hover: none) {
+      &:active {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin limit-lines($lines: 1, $isUsedBefore: false) {
+  @if ($lines > 1) {
+    @if not $isUsedBefore {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+    -webkit-line-clamp: $lines;
+  } @else if (not $isUsedBefore) {
+    white-space: nowrap;
+  }
+
+  @if not $isUsedBefore {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/**
+ * Mixin: transition
+ *
+ * Syntax:
+ *   @include transition(property);
+ *   @include transition((property1, property2));
+ *   @include transition((property1: duration1, property2: duration2));
+ *
+ * Examples:
+ *   @include transition(opacity);
+ *   @include transition((background-color, color));
+ *   @include transition((border-color: 0.9s, transform: 300ms));
+ */
+
+@mixin transition($properties, $duration: var(--transition-duration)) {
+  @if meta.type-of($properties) == 'map' or meta.type-of($properties) == 'list'
+  {
+    $parts: ();
+    @each $prop, $dur in $properties {
+      @if $dur == null {
+        $dur: $duration;
+      }
+
+      $parts: list.append($parts, #{$prop} #{$dur}, $separator: comma);
+    }
+
+    transition: $parts;
+  } @else {
+    transition: $properties $duration;
+  }
+}
+
+@mixin no-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin container {
+  width: min(100%, var(--container-width));
+  padding-inline: var(--container-padding-x);
+  margin-inline: auto;
+}

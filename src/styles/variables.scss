@@ -1,0 +1,37 @@
+:root {
+  // Fonts
+  --font-family-base: 'SomeFont', system-ui;
+  --font-family-accent: 'SomeFont2', system-ui;
+
+  // Colors
+  --color-black: #333333;
+  --color-white: #{$color-white};
+  --color-black-secondary: #080808;
+  --color-white-secondary: #cccccc;
+
+  // Base colors
+  --color-base: var(--color-black);
+  --color-base-secondary: var(--color-black-secondary);
+  --color-background: var(--color-white);
+
+  // Accent colors
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary};
+  --color-accent: #{$color-accent};
+
+  // Layout
+  --container-width: 1200px;
+  --container-padding-x: 15px;
+  --header-height: 77px;
+  --sticky-cta-height: 77px;
+
+  // Focus outline
+  --outline-size: 2px;
+  --outline-offset: 2px;
+
+  // Misc
+  --shadow-md: 0 16px 18px rgba(0, 0, 0, 0.1);
+  --transition-duration: 0.3s;
+  --header-z-index: 10;
+  --decor-opacity: 0.4;
+}

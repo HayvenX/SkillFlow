@@ -1,0 +1,91 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: 0.01s !important;
+  }
+}
+
+:target {
+  scroll-margin-top: var(--header-height);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
+  min-inline-size: $min-viewport-width;
+
+  font: 16px/1.5 var(--font-family-base);
+  background-color: var(--color-background);
+  color: var(--color-base);
+}
+
+.main {
+  flex-grow: 1;
+
+  > .section:last-child {
+    padding-bottom: clamp(100px, 14vw, 200px);
+  }
+}
+
+.container {
+  @include container;
+}
+
+.js-scroll-animation-init {
+  [data-animate-on-scroll] {
+    // opacity: 0;
+    transition: 0.01s !important;
+  }
+}
+
+img {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+
+  color: var(--color-primary);
+
+  @include transition((text-decoration-color, color));
+  @include no-highlight;
+
+  @include hover {
+    text-decoration-color: currentColor;
+  }
+
+  &:active {
+    color: var(--color-accent);
+  }
+}
+
+.text > p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+:focus {
+  -webkit-focus-ring-color: transparent;
+}
+
+:focus-visible {
+  outline: var(--outline-size) solid var(--color-primary);
+  outline-offset: var(--outline-offset);
+  border-radius: 4px;
+}
