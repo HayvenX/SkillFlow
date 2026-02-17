@@ -1,6 +1,6 @@
 {
-  "name": "Zwyczajnie Niezwyczajni – Chrześcijańska Misja Ewangelizacyjna w Radomiu",
-  "short_name": "Chrześcijańska misja „Zwyczajnie niezwyczajni”",
+  "name": "",
+  "short_name": "",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#c08f63",
+  "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "browser",
   "scope": "/",
