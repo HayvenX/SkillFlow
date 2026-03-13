@@ -57,13 +57,13 @@ const optimizeSvgSources = () => {
   };
 
   const runAll = () => {
-    optimizeDir('src/assets/icons/mono', true);
+    optimizeDir('src/assets/icons/monochrome', true);
     ['src/assets/icons', 'src/assets/images'].forEach(optimizeDir);
   };
 
   const handleSvgChange = (id) => {
     if (!id.endsWith('.svg')) return;
-    const isMono = id.includes('/src/assets/icons/mono/');
+    const isMono = id.includes('/src/assets/icons/monochrome/');
     if (id.includes('/src/assets/icons/')) optimizeSvg(id, isMono);
   };
 
