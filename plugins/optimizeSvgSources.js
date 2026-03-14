@@ -63,8 +63,9 @@ const optimizeSvgSources = () => {
 
   const handleSvgChange = (id) => {
     if (!id.endsWith('.svg')) return;
-    const isMono = id.includes('/src/assets/icons/monochrome/');
-    if (id.includes('/src/assets/icons/')) optimizeSvg(id, isMono);
+    const normalizedId = id.replace(/\\/g, '/');
+    const isMono = normalizedId.includes('/src/assets/icons/monochrome/');
+    if (normalizedId.includes('/src/assets/icons/')) optimizeSvg(id, isMono);
   };
 
   return {
