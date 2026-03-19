@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 
+import react from '@vitejs/plugin-react';
 import { vitePluginWebp } from 'vite-plugin-to-webp';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
@@ -22,6 +23,8 @@ export default {
   build: { emptyOutDir: true },
 
   plugins: [
+    react(),
+
     VitePluginSvgSpritemap(['src/assets/icons/**/*.svg'], {
       prefix: '',
       svgo: false,
