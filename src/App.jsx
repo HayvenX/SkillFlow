@@ -1,3 +1,5 @@
+import './App.scss';
+
 function App() {
   const handleSubmit = (event) => {
     event.preventDefault();

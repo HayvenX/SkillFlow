@@ -1,0 +1,22 @@
+.app {
+  padding: 20px;
+}
+
+label {
+  display: block;
+}
+
+input[type='text'] {
+  display: block;
+  width: 33%;
+  margin-block: 1em;
+
+  border: 1px solid #000;
+}
+
+button {
+  padding: 10px;
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+}
