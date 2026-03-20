@@ -1,10 +1,12 @@
+import type { SyntheticEvent } from 'react';
+
 import './App.scss';
 
 function App() {
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
     const requestType = formData.get('request-type');
     const inputValue = formData.get('request-details');
   };
